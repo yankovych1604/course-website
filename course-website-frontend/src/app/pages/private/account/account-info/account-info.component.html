@@ -1,0 +1,98 @@
+<div class="account__info">
+  <h2 class="account__info-heading">Особисті дані</h2>
+
+  <form class="account__info-form" *ngIf="userForm?.controls" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <div class="account__info-firstname">
+      <label class="account__info-text">Ім'я</label>
+      <input class="account__info-input" type="text" formControlName="firstName" [ngClass]="{'account__info-error-border': isFieldInvalid('firstName')}">
+      <div class="account__info-error" *ngIf="isFieldInvalid('firstName')">
+        <p class="account__info-error-text" *ngIf="getFieldErrors('firstName')?.['required']">
+          Ім’я є обов’язковим
+        </p>
+
+        <p class="account__info-error-text" *ngIf="getFieldErrors('firstName')?.['pattern'] && !getFieldErrors('firstName')?.['minlength']">
+          Ім’я має починатися з великої літери
+        </p>
+
+        <p class="account__info-error-text" *ngIf="getFieldErrors('firstName')?.['minlength'] && !getFieldErrors('firstName')?.['pattern']">
+          Ім’я має містити щонайменше 3 літери
+        </p>
+
+        <p class="account__info-error-text" *ngIf="getFieldErrors('firstName')?.['minlength'] && getFieldErrors('firstName')?.['pattern']">
+          Ім’я має починатися з великої літери та містити щонайменше 3 літери
+        </p>
+      </div>
+    </div>
+
+    <div class="account__info-lastname">
+      <label class="account__info-text">Прізвище</label>
+      <input class="account__info-input" type="text" formControlName="lastName" [ngClass]="{'account__info-error-border': isFieldInvalid('lastName')}">
+      <div class="account__info-error" *ngIf="isFieldInvalid('lastName')">
+        <p class="account__info-error-text" *ngIf="getFieldErrors('lastName')?.['required']">
+          Прізвище є обов’язковим
+        </p>
+
+        <p class="account__info-error-text" *ngIf="getFieldErrors('lastName')?.['pattern'] && !getFieldErrors('lastName')?.['minlength']">
+          Прізвище має починатися з великої літери
+        </p>
+
+        <p class="account__info-error-text" *ngIf="getFieldErrors('lastName')?.['minlength'] && !getFieldErrors('lastName')?.['pattern']">
+          Прізвище має містити щонайменше 3 літери
+        </p>
+
+        <p class="account__info-error-text" *ngIf="getFieldErrors('lastName')?.['minlength'] && getFieldErrors('lastName')?.['pattern']">
+          Прізвище має починатися з великої літери та містити щонайменше 3 літери
+        </p>
+      </div>
+    </div>
+
+    <div class="account__info-phone">
+      <label class="account__info-text">Номер телефону</label>
+      <input class="account__info-input" type="text" formControlName="phone" [ngClass]="{'account__info-error-border': isFieldInvalid('phone')}" mask="+000(00)00-000-00">
+      <div class="account__info-error" *ngIf="isFieldInvalid('phone')">
+        <p class="account__info-error-text" *ngIf="getFieldErrors('phone')?.['required']">
+          Номер телефона є обов’язковим
+        </p>
+
+        <p class="account__info-error-text" *ngIf="getFieldErrors('phone')?.['pattern']">
+          Номер телефона має бути у форматі +380(XX)XX-XXX-XX
+        </p>
+      </div>
+    </div>
+
+    <div class="account__info-email">
+      <label class="account__info-text">Електронна адреса</label>
+      <input class="account__info-input" type="text" formControlName="email" [readonly]="true">
+    </div>
+
+    <div class="account__info-message">
+      <div class="account__info-snackbar" *ngIf="noChangesWarning">
+        <div class="account__info-snackbar-container">
+          <p class="account__info-snackbar-text">Немає змін для збереження</p>
+
+          <div class="account__info-snackbar-separator"></div>
+
+          <div class="account__info-snackbar-close" (click)="closeAllSnackbars()">
+            <p class="account__info-snackbar-close-text">Закрити</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="account__info-snackbar" *ngIf="showSuccessMessage">
+        <div class="account__info-snackbar-container">
+          <p class="account__info-snackbar-text">Дані успішно оновлено!</p>
+
+          <div class="account__info-snackbar-separator"></div>
+
+          <div class="account__info-snackbar-close" (click)="closeAllSnackbars()">
+            <p class="account__info-snackbar-close-text">Закрити</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="account__info-button">
+      <button class="account__info-btn" type="submit">Зберегти зміни</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,224 @@
+@use "../../../_system/_styles/_mixins.scss";
+@use "../../../_system/_styles/_theme-material.scss" as *;
+
+.intro {
+  &__background {
+    z-index: -1;
+    position: relative;
+    right: 0;
+    top: 60px;
+
+    &-circle {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      opacity: 0.8;
+      border-radius: 50%;
+      background-color: $primary;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 4px 200px 0 rgba(15, 15, 16, 0.10);
+    }
+
+    &-circle1 {
+      width: 1500px;
+      height: 1500px;
+    }
+
+    &-circle2 {
+      width: 1050px;
+      height: 1050px;
+    }
+
+    &-circle3 {
+      width: 650px;
+      height: 650px;
+    }
+  }
+
+  &__wrapper {
+    max-width: 1296px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  &__content {
+    width: 100%;
+    @include mixins.flex(row, space-between, center);
+  }
+
+  &__info {
+    gap: 32px;
+    width: 430px;
+    padding: 136.75px 0;
+    @include mixins.flex(column, flex-start, flex-start);
+  }
+
+  &__heading {
+    gap: 20px;
+    @include mixins.flex(row, flex-start, flex-start);
+  }
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  &__subtitle {
+    letter-spacing: -0.32px;
+    @include mixins.fonts-text($manrope-regular, 16px, $black);
+  }
+
+  &__title {
+    line-height: 60px;
+    letter-spacing: -2.8px;
+    @include mixins.fonts-text($manrope-bold, 56px, $black);
+  }
+
+  &__button {
+    width: 100%;
+  }
+
+  &__description {
+    letter-spacing: -0.36px;
+    @include mixins.fonts-text($manrope-regular, 18px, $black);
+  }
+
+  &__image-wrapper {
+    width: 656px;
+    height: 560px;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+  }
+
+  @media (max-width: $media-xxl) {
+    max-width: 1240px;
+
+    &__wrapper {
+      max-width: 1240px;
+      padding: 0 30px;
+    }
+
+    &__info {
+      padding: 139.25px 0;
+    }
+
+    &__image-wrapper {
+      width: 576px;
+      height: 560px;
+    }
+  }
+
+  @media (max-width: $media-xl) {
+    max-width: 1024px;
+    margin: 0 auto 80px;
+
+    &__wrapper {
+      max-width: 1024px;
+    }
+
+    &__content {
+      @include mixins.flex(column, flex-start, flex-start);
+    }
+
+    &__info {
+      gap: 24px;
+      margin: 0 auto;
+      padding: 56px 0;
+      @include mixins.flex(column, flex-start, center);
+    }
+
+    &__title {
+      text-align: center;
+    }
+
+    &__image-wrapper {
+      margin: 0 auto;
+    }
+
+    &__flex {
+      @include mixins.flex(row, center, center);
+    }
+  }
+
+  @media (max-width: $media-lg) {
+    max-width: 768px;
+    margin: 0 auto 56px;
+
+    &__wrapper {
+      max-width: 768px;
+      padding: 0 20px;
+    }
+
+    &__info {
+      gap: 18px;
+      width: 338px;
+    }
+
+    &__title {
+      line-height: 44px;
+      letter-spacing: -2.2px;
+      @include mixins.fonts-text($manrope-bold, 44px, $black);
+    }
+
+    &__button-link {
+      padding: 24px 48px;
+    }
+
+    &__image-wrapper {
+      width: 476px;
+      height: 460px;
+    }
+  }
+
+  @media (max-width: $media-md) {
+    max-width: 576px;
+
+    &__wrapper {
+      max-width: 576px;
+    }
+
+    &__info {
+      gap: 15px;
+      width: 296px;
+      padding: 36px 0;
+    }
+
+    &__title {
+      line-height: 36px;
+      letter-spacing: -1.7px;
+      @include mixins.fonts-text($manrope-bold, 36px, $black);
+    }
+
+    &__button-link {
+      padding: 18px 28px;
+    }
+
+    &__image-wrapper {
+      width: 350px;
+      height: 364px;
+    }
+  }
+
+  @media (max-width: $media-sm) {
+    max-width: 425px;
+
+    &__wrapper {
+      max-width: 425px;
+      padding: 0 10px;
+    }
+
+    &__info {
+      gap: 12px;
+      width: 280px;
+    }
+
+    &__image-wrapper {
+      width: 278px;
+      height: 300px;
+    }
+  }
+}

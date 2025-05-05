@@ -1,0 +1,152 @@
+<div class="register">
+  <div class="register__container">
+    <div class="register__block">
+      <div class="register__header">
+        <h2 class="register__header-title">Зареєструватись</h2>
+      </div>
+
+      <form class="register__form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="register__field">
+          <label for="register__first-name" class="register__label">Ім'я</label>
+          <div class="register__input-wrapper" [ngClass]="{'register__error-border': isFieldInvalid('firstName')}">
+            <input formControlName="firstName" type="text" id="register__first-name" class="register__input register__input-first-name" placeholder="Enter first name">
+          </div>
+          <div class="register__error" *ngIf="isFieldInvalid('firstName')">
+            <p class="register__error-text" *ngIf="getFieldErrors('firstName')?.['required']">
+              Ім’я є обов’язковим
+            </p>
+
+            <p class="register__error-text" *ngIf="getFieldErrors('firstName')?.['pattern'] && !getFieldErrors('firstName')?.['minlength']">
+              Ім’я має починатися з великої літери
+            </p>
+
+            <p class="register__error-text" *ngIf="getFieldErrors('firstName')?.['minlength'] && !getFieldErrors('firstName')?.['pattern']">
+              Ім’я має містити щонайменше 3 літери
+            </p>
+
+            <p class="register__error-text" *ngIf="getFieldErrors('firstName')?.['minlength'] && getFieldErrors('firstName')?.['pattern']">
+              Ім’я має починатися з великої літери та містити щонайменше 3 літери
+            </p>
+          </div>
+        </div>
+
+        <div class="register__field">
+          <label for="register__last-name" class="register__label">Прізвище</label>
+          <div class="register__input-wrapper" [ngClass]="{'register__error-border': isFieldInvalid('lastName')}">
+            <input formControlName="lastName" type="text" id="register__last-name" class="register__input register__input-last-name" placeholder="Enter last name">
+          </div>
+          <div class="register__error" *ngIf="isFieldInvalid('lastName')">
+            <p class="register__error-text" *ngIf="getFieldErrors('lastName')?.['required']">
+              Прізвище є обов’язковим
+            </p>
+
+            <p class="register__error-text" *ngIf="getFieldErrors('lastName')?.['pattern'] && !getFieldErrors('lastName')?.['minlength']">
+              Прізвище має починатися з великої літери
+            </p>
+
+            <p class="register__error-text" *ngIf="getFieldErrors('lastName')?.['minlength'] && !getFieldErrors('lastName')?.['pattern']">
+              Прізвище має містити щонайменше 3 літери
+            </p>
+
+            <p class="register__error-text" *ngIf="getFieldErrors('lastName')?.['minlength'] && getFieldErrors('lastName')?.['pattern']">
+              Прізвище має починатися з великої літери та містити щонайменше 3 літери
+            </p>
+          </div>
+        </div>
+
+        <div class="register__field">
+          <label for="register__email" class="register__label">Пошта</label>
+          <div class="register__input-wrapper" [ngClass]="{'register__error-border': isFieldInvalid('email')}">
+            <input formControlName="email" type="text" id="register__email" class="register__input register__input-email" placeholder="Enter email">
+          </div>
+          <div class="register__error" *ngIf="isFieldInvalid('email')">
+            <p class="register__error-text" *ngIf="getFieldErrors('email')?.['required']">
+              Електронна пошта є обов’язковою
+            </p>
+
+            <p class="register__error-text" *ngIf="getFieldErrors('email')?.['pattern']">
+              Електронна пошта має бути у форматі username&#64;gmail.com (ukr.net, icloud.com)
+            </p>
+          </div>
+        </div>
+
+        <div class="register__field">
+          <label for="register__phone" class="register__label">Телефон</label>
+          <div class="register__input-wrapper" [ngClass]="{'register__error-border': isFieldInvalid('phone')}">
+            <input formControlName="phone" type="text" id="register__phone" class="register__input register__input-phone" placeholder="Enter phone number" mask="+000(00)00-000-00">
+          </div>
+          <div class="register__error" *ngIf="isFieldInvalid('phone')">
+            <p class="register__error-text" *ngIf="getFieldErrors('phone')?.['required']">
+              Номер телефона є обов’язковим
+            </p>
+
+            <p class="register__error-text" *ngIf="getFieldErrors('phone')?.['pattern']">
+              Номер телефона має бути у форматі +380(XX)XX-XXX-XX
+            </p>
+          </div>
+        </div>
+
+        <div class="register__field">
+          <label for="register__password" class="register__label">Пароль</label>
+          <div class="register__input-wrapper" [ngClass]="{'register__error-border': isFieldInvalid('password')}">
+            <input formControlName="password" [type]="isPasswordVisible ? 'text' : 'password'" id="register__password" class="register__input register__input-password" placeholder="Enter password">
+
+            <button type="button" class="register__toggle-password" (click)="showPassword()">
+              <img src="assets/icons/password-lock-icon.png" alt="password-lock-icon" class="register__toggle-icon" *ngIf="!isPasswordVisible">
+              <img src="assets/icons/password-unlock-icon.png" alt="password-unlock-icon" class="register__toggle-icon" *ngIf="isPasswordVisible">
+            </button>
+          </div>
+          <div class="register__error" *ngIf="isFieldInvalid('password')">
+            <p class="register__error-text" *ngIf="getFieldErrors('password')?.['required']">
+              Пароль є обов’язковим
+            </p>
+
+            <p class="register__error-text" *ngIf="getFieldErrors('password')?.['pattern']">
+              Пароль має містити мінімум 8 символів, включаючи 1 велику літеру, 1 малу та 1 цифру
+            </p>
+          </div>
+        </div>
+
+        <div class="register__field">
+          <label for="register__confirm-password" class="register__label">Повторіть пароль</label>
+          <div class="register__input-wrapper" [ngClass]="{'register__error-border': isFieldInvalid('confirmPassword')}">
+            <input formControlName="confirmPassword" [type]="isConfirmPasswordVisible ? 'text' : 'password'" id="register__confirm-password" class="register__input register__input-confirm-password" placeholder="Enter password again">
+
+            <button type="button" class="register__toggle-password" (click)="showConfirmPassword()">
+              <img src="assets/icons/password-lock-icon.png" alt="password-lock-icon" class="register__toggle-icon" *ngIf="!isConfirmPasswordVisible">
+              <img src="assets/icons/password-unlock-icon.png" alt="password-unlock-icon" class="register__toggle-icon" *ngIf="isConfirmPasswordVisible">
+            </button>
+          </div>
+          <div class="register__error" *ngIf="(isFieldInvalid('confirmPassword') && getFieldErrors('confirmPassword')?.['required']) || (mismatchOnceShown && registerForm.get('confirmPassword')?.value)">
+            <p class="register__error-text" *ngIf="getFieldErrors('confirmPassword')?.['required']">
+              Повторний пароль є обов’язковим
+            </p>
+
+            <p class="register__error-text" *ngIf="mismatchOnceShown && registerForm.get('confirmPassword')?.value">
+              Паролі не співпадають
+            </p>
+          </div>
+        </div>
+
+        <div class="register__massage">
+          <div class="register__notSuccess" *ngIf="!isRegisterSuccess">
+            <p class="register__notSuccess-text">
+              Така пошта вже використовується
+            </p>
+          </div>
+        </div>
+
+        <button type="submit" class="register__button">
+          <a class="register__button-text">Зареєструватись</a>
+        </button>
+      </form>
+
+      <div class="register__footer">
+        <p class="register__footer-title">
+          Вже зарестровані?
+          <a class="register__footer-link" [routerLink]="'/sign-in'">Увійти</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

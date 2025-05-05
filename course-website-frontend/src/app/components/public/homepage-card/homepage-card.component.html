@@ -1,0 +1,22 @@
+<div class="card" [routerLink]="'/course/'+course?.url">
+  <div class="card__header">
+    <div class="card__tags">
+      <span class="card__tag card__tag--new" *ngIf="course?.new">Нова</span>
+      <span class="card__tag card__tag--popular" *ngIf="course?.popular">Популярна</span>
+      <span class="card__tag card__tag--nocode" *ngIf="course?.nocoded">Без кодингу</span>
+      <span class="card__tag card__tag--withcode" *ngIf="course?.coded">Кодинг</span>
+    </div>
+    <div class="card__image-wrapper">
+      <img [src]="course?.image" alt="" class="card__image">
+    </div>
+  </div>
+
+  <div class="card__body">
+    <p class="card__duration" >
+      {{ course?.duration }}+
+      <span>{{ (course?.duration ?? 0) < 5 ? 'місяці' : 'місяців' }}</span>
+    </p>
+    <h3 class="card__profession">{{ course?.title }}</h3>
+    <p class="card__description">{{ course?.description }}</p>
+  </div>
+</div>

@@ -1,0 +1,327 @@
+@use "../../../../_system/_styles/_mixins.scss";
+@use "../../../../_system/_styles/_theme-material.scss" as *;
+
+.account__reviews {
+  width: 100%;
+  height: 100%;
+  gap: 20px 0;
+  @include mixins.flex(column, flex-start, flex-start);
+
+  &-heading {
+    line-height: 28px;
+    text-align: center;
+    @include mixins.fonts-text($manrope-bold, 24px, $darkgray);
+  }
+
+  &-text {
+    line-height: 22px;
+    @include mixins.fonts-text($manrope-medium, 18px, $darkgray);
+  }
+
+  &-content {
+    width: 100%;
+    height: 100%;
+  }
+
+  &-form {
+    width: 100%;
+    height: 100%;
+    gap: 20px 0;
+    @include mixins.flex(column, flex-start, flex-start);
+  }
+
+  &-list-wrapper {
+    width: 100%;
+    gap: 10px 0;
+    @include mixins.flex(column, flex-start, flex-start);
+  }
+
+  &-list {
+    width: 100%;
+    height: 44px;
+    gap: 10px 0;
+    cursor: pointer;
+    position: relative;
+    @include mixins.flex(column, flex-start, flex-start);
+  }
+
+  &-dropdown {
+    width: 100%;
+    position: static;
+    @include mixins.flex(column, flex-start, center);
+    @include mixins.box-style(1px solid $secondary, 10px, $primary);
+
+    &-error {
+      border: 1px solid $red;
+    }
+  }
+
+  &-selected {
+    width: 100%;
+    padding: 10px 8px;
+    @include mixins.fonts-text($manrope-bold, 16px, $darkgray);
+  }
+
+  &-image {
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    top: calc((100% - 12px)/2);
+    right: 10px;
+  }
+
+  &-icon {
+    width: 100%;
+    height: 100%;
+  }
+
+  &-menu {
+    width: 100%;
+    padding: 10px 8px;
+    border-top: 2px solid $gray;
+    @include mixins.flex(column, flex-start, center);
+  }
+
+  &-button {
+    width: 100%;
+    cursor: pointer;
+    padding: 10px 8px;
+    @include mixins.fonts-text($manrope-regular, 16px, $darkgray);
+    @include mixins.box-style(1px solid transparent, 10px, transparent);
+  }
+
+  &-button:hover {
+    @include mixins.box-style(1px solid $secondary, 10px, $white);
+  }
+
+  &-rating-wrapper {
+    width: 100%;
+    gap: 10px 0;
+    @include mixins.flex(column, flex-start, flex-start);
+  }
+
+  &-rating {
+    width: 100%;
+    padding: 10px 8px;
+    @include mixins.flex(column, flex-start, flex-start);
+    @include mixins.box-style(1px solid $secondary, 10px, $primary);
+
+    &-label {
+      @include mixins.fonts-text($manrope-bold, 16px, $darkgray);
+    }
+
+    &-error {
+      border: 1px solid $red;
+    }
+  }
+
+  &-stars {
+    width: 100%;
+    gap: 0 15px;
+    cursor: pointer;
+    @include mixins.flex(row, flex-start, flex-start);
+  }
+
+  &-star {
+    font-size: 28px;
+    color: $primary;
+    transition: color 0.3s;
+    -webkit-text-stroke: 1px $secondary;
+
+    &-active {
+      color: $secondary;
+      -webkit-text-stroke: 1px $secondary;
+    }
+
+    &-wrapper {
+      @include mixins.flex(row, flex-start, flex-start);
+    }
+  }
+
+  &-description {
+    width: 100%;
+    gap: 10px 0;
+    @include mixins.flex(column, flex-start, flex-start);
+  }
+
+  &-textarea {
+    resize: none;
+    width: 100%;
+    height: 195px;
+    padding: 10px 8px;
+    @include mixins.fonts-text($manrope-medium, 16px, $darkgray);
+    @include mixins.box-style(1px solid $secondary, 10px, $primary);
+
+    &::placeholder {
+      @include mixins.fonts-text($manrope-medium, 16px, $darkgray);
+    }
+
+    &-error {
+      border: 1px solid $red;
+    }
+  }
+
+  &-snackbar {
+    width: 100%;
+    @include mixins.flex(row, center, flex-start);
+
+    &-container {
+      width: fit-content;
+      animation: fadeInSlide 0.3s ease;
+      @include mixins.flex(row, flex-start, center);
+      @include mixins.box-style(1px solid $secondary, 8px, $primary);
+    }
+
+    &-text {
+      margin: 10px 16px;
+      @include mixins.fonts-text($manrope-medium, 14px, $darkgray);
+    }
+
+    &-separator {
+      width: 1px;
+      height: 42px;
+      background-color: $secondary;
+    }
+
+    &-close {
+      cursor: pointer;
+      margin: 10px 16px;
+
+      &-text {
+        text-decoration: underline;
+        @include mixins.fonts-text($manrope-bold, 14px, $darkgray);
+      }
+    }
+  }
+
+  &-error {
+    width: 100%;
+
+    &-text {
+      width: 100%;
+      text-align: center;
+      @include mixins.fonts-text($manrope-medium, 14px, $red);
+    }
+  }
+
+  &-submit {
+    margin-top: auto;
+    width: 100%;
+    cursor: pointer;
+    padding: 10px 8px;
+    @include mixins.fonts-text($manrope-bold, 16px, $darkgray);
+    @include mixins.box-style(1px solid $primary, 10px, $primary);
+  }
+
+  &-submit:hover {
+    @include mixins.box-style(1px solid $secondary, 10px, $primary);
+  }
+
+  &-submit:disabled {
+    opacity: 0.8;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  @media (max-width: $media-xl) {
+    &-content {
+      height: 456px;
+    }
+  }
+
+  @media (max-width: $media-md) {
+    &-content {
+      height: 408px;
+    }
+
+    &-heading {
+      line-height: 24px;
+      @include mixins.fonts-text($manrope-bold, 20px, $darkgray);
+    }
+
+    &-text {
+      line-height: 20px;
+      @include mixins.fonts-text($manrope-medium, 16px, $darkgray);
+    }
+
+    &-list {
+      height: 31px;
+    }
+
+    &-selected {
+      padding: 5px 4px;
+      @include mixins.fonts-text($manrope-bold, 14px, $darkgray);
+    }
+
+    &-menu {
+      padding: 5px 4px;
+    }
+
+    &-button {
+      padding: 5px 4px;
+      @include mixins.fonts-text($manrope-regular, 14px, $darkgray);
+    }
+
+    &-rating {
+      padding: 5px 4px;
+
+      &-label {
+        @include mixins.fonts-text($manrope-bold, 14px, $darkgray);
+      }
+    }
+
+    &-star {
+      font-size: 24px;
+    }
+
+    &-textarea {
+      padding: 5px 4px;
+      @include mixins.fonts-text($manrope-medium, 14px, $darkgray);
+
+      &::placeholder {
+        @include mixins.fonts-text($manrope-medium, 14px, $darkgray);
+      }
+    }
+
+    &-snackbar {
+      &-text {
+        margin: 5px 8px;
+        @include mixins.fonts-text($manrope-medium, 12px, $darkgray);
+      }
+
+      &-separator {
+        height: 29px;
+      }
+
+      &-close {
+        margin: 5px 8px;
+
+        &-text {
+          @include mixins.fonts-text($manrope-bold, 12px, $darkgray);
+        }
+      }
+    }
+
+    &-error {
+      &-text {
+        @include mixins.fonts-text($manrope-medium, 12px, $red);
+      }
+    }
+
+    &-submit {
+      padding: 5px 4px;
+      @include mixins.fonts-text($manrope-bold, 14px, $darkgray);
+    }
+  }
+}
+
+@keyframes fadeInSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

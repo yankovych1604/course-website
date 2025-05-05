@@ -1,0 +1,12 @@
+<div class="steps__container">
+  <div class="step" *ngFor="let step of steps; let i = index">
+    <div class="step__content">
+      <span class="step__number">{{ i + 1 }}</span>
+      <h3 class="step__title">{{ step.title }}</h3>
+      <p class="step__description">
+        {{ step.description }}
+        <span *ngIf="i === steps.length - 1">{{ course?.title }}</span>
+      </p>
+    </div>
+  </div>
+</div>

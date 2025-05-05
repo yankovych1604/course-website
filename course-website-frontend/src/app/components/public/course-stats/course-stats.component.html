@@ -1,0 +1,17 @@
+<div class="stats">
+  <div class="stats-item">
+    <div class="stats-icon">
+      <img src="assets/icons/schedule-icon.png" alt="schedule" class="stats-image">
+    </div>
+    <p class="stats-number">{{ courseProgram?.totalAmountOfTopics }}</p>
+    <p class="stats-label">{{ (courseProgram?.totalAmountOfTopics ?? 0) > 1 ? 'Topics' : 'Topic' }}</p>
+  </div>
+
+  <div class="stats-item">
+    <div class="stats-icon">
+      <img src="assets/icons/trophy-icon.png" alt="trophy" class="stats-image">
+    </div>
+    <p class="stats-number">{{ courseProgram?.totalAmountOfProjects }}</p>
+    <p class="stats-label">{{ (courseProgram?.totalAmountOfProjects ?? 0) > 1 ? 'Projects' : 'Project' }}</p>
+  </div>
+</div>

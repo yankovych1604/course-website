@@ -1,0 +1,37 @@
+<div class="sections">
+  <section class="section1">
+    <div class="section1__container">
+      <app-intro-block [intro]="introData" />
+    </div>
+  </section>
+
+  <section class="section2">
+    <div class="section2__container">
+      <div class="section2__heading">
+        <div class="section2__heading-text">
+          <p class="section2__subtitle">Чого ми навчаємо</p>
+          <h2 class="section2__title">Популярні професії</h2>
+        </div>
+      </div>
+
+      <div class="section2__content">
+        <app-homepage-card  [course]="course" *ngFor="let course of coursesList" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section3">
+    <div class="section3__container">
+      <div class="section3__heading">
+        <p class="section3__subtitle">FAQ</p>
+        <h2 class="section3__title">Нас часто питають</h2>
+      </div>
+
+      <div class="section3__content">
+        <div class="section3__list">
+          <app-faq-item [faq]="faq" *ngFor="let faq of faqsList" />
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

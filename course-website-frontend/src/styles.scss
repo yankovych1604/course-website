@@ -1,0 +1,9 @@
+/* You can add global styles to this file, and also import other style files */
+
+@use "app/_system/_styles/_base";
+@use "app/_system/_styles/_theme-material";
+
+app-account-info, app-account-courses, app-account-certificates, app-account-reviews {
+  width: 100%;
+  height: 100%;
+}

@@ -1,0 +1,127 @@
+@use "../../../_system/_styles/_mixins.scss";
+@use "../../../_system/_styles/_theme-material.scss" as *;
+
+.sections {
+  width: 100%;
+  padding-top: 78px;
+  margin-bottom: 120px;
+  background-color: $primary;
+
+  @media (max-width: $media-xl) {
+    margin-bottom: 80px;
+  }
+
+  @media (max-width: $media-lg) {
+    margin-bottom: 56px;
+  }
+}
+
+.section1 {
+  width: 100%;
+  padding: 0 40px;
+  margin: 120px auto 0;
+
+  &__container {
+    max-width: 1216px;
+    width: 100%;
+    margin: 0 auto;
+    gap: 40px 0;
+    @include mixins.flex(column, flex-start, flex-start);
+  }
+
+  &__header {
+    width: 100%;
+    @include mixins.flex(column, flex-start, flex-start);
+  }
+
+  &__heading {
+    width: 100%;
+    margin-bottom: 48px;
+    @include mixins.flex(row, flex-start, flex-start);
+
+    &-text {
+      text-align: center;
+      line-height: 50px;
+      letter-spacing: -2.45px;
+      @include mixins.fonts-text($manrope-bold, 50px, $black);
+    }
+  }
+
+  &__description {
+    width: 100%;
+    gap: 10px 0;
+    @include mixins.flex(column, flex-start, center);
+
+    &-title {
+      text-align: center;
+      letter-spacing: -0.96px;
+      @include mixins.fonts-text($manrope-bold, 32px, $black);
+    }
+
+    &-text {
+      text-align: center;
+      letter-spacing: 0.27px;
+      @include mixins.fonts-text($manrope-medium, 16px, $black);
+    }
+  }
+
+  &__content {
+    gap: 40px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: $media-xxl) {
+    padding: 0 30px;
+  }
+
+  @media (max-width: $media-xl) {
+    margin: 80px auto 0;
+
+    &__heading-text {
+      line-height: 40px;
+      letter-spacing: -1.45px;
+      @include mixins.fonts-text($manrope-bold, 36px, $black);
+    }
+
+    &__description-title {
+      line-height: 28px;
+      letter-spacing: -0.96px;
+      @include mixins.fonts-text($manrope-bold, 24px, $black);
+    }
+
+    &__content {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: $media-lg) {
+    padding: 0 20px;
+    margin: 56px auto 0;
+
+    &__heading {
+      margin-bottom: 28px;
+    }
+  }
+
+  @media (max-width: $media-md) {
+    &__heading-text {
+      line-height: 32px;
+      @include mixins.fonts-text($manrope-bold, 28px, $black);
+    }
+
+    &__description-title {
+      line-height: 26px;
+      @include mixins.fonts-text($manrope-bold, 22px, $black);
+    }
+
+    &__content {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: $media-sm) {
+    padding: 0 10px;
+  }
+}

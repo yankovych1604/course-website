@@ -1,0 +1,53 @@
+@use "../../../_system/_styles/_mixins.scss";
+@use "../../../_system/_styles/_theme-material.scss" as *;
+
+.stats {
+  width: 100%;
+  gap: 0 16px;
+  @include mixins.flex(row, flex-start, flex-start);
+
+  &-item {
+    width: 224px;
+    padding: 32px;
+    @include mixins.flex(column, flex-start, flex-start);
+  }
+
+  &-item:nth-child(1) {
+    @include mixins.box-style(1px solid $purple, 32px, $purple);
+  }
+
+  &-item:nth-child(2) {
+    @include mixins.box-style(1px solid $darkgray, 32px, $darkgray);
+  }
+
+  &-image {
+    width: 36px;
+    height: 36px;
+  }
+
+  &-number {
+    margin-top: auto;
+    margin-bottom: 8px;
+    letter-spacing: -2.25px;
+    @include mixins.fonts-text($manrope-semibold, 96px, $white);
+  }
+
+  &-label {
+    letter-spacing: -1.25px;
+    @include mixins.fonts-text($manrope-bold, 20px, $white);
+  }
+
+  @media (max-width: $media-xl) {
+    &-item {
+      padding: 20px;
+      width: calc((100% - 16px) / 2);
+    }
+
+    &-number {
+      margin-top: auto;
+      margin-bottom: 8px;
+      letter-spacing: -1.25px;
+      @include mixins.fonts-text($manrope-semibold, 56px, $white);
+    }
+  }
+}

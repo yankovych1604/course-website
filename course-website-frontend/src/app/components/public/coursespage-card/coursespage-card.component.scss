@@ -1,0 +1,95 @@
+@use "../../../_system/_styles/_mixins.scss";
+@use "../../../_system/_styles/_theme-material.scss" as *;
+
+.course {
+  gap: 20px 0;
+  cursor: pointer;
+  position: relative;
+  padding: 32px 20px;
+  overflow: hidden;
+  @include mixins.flex(column, flex-start, center);
+  @include mixins.box-style(1px solid $primary, 32px, $primary);
+
+  &__header {
+    gap: 10px 0;
+    @include mixins.flex(column, flex-start, center);
+  }
+
+  &__image-wrapper {
+    width: 100px;
+    height: 100px;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__info {
+    @include mixins.flex(column, flex-start, center);
+  }
+
+  &__category {
+    letter-spacing: -2px;
+    @include mixins.fonts-text($manrope-bold, 28px, $black);
+  }
+
+  &__title {
+    letter-spacing: -2px;
+    @include mixins.fonts-text($manrope-bold, 28px, $black);
+  }
+
+  &__details {
+    gap: 5px 0;
+    width: 100%;
+    @include mixins.flex(column, flex-start, flex-start);
+  }
+
+  &__duration, &__difficulty, &__instructor {
+    letter-spacing: -0.32px;
+    @include mixins.fonts-text($manrope-regular, 16px, $gray);
+  }
+
+  &__duration-bold, &__difficulty-bold, &__instructor-bold {
+    @include mixins.fonts-text($manrope-bold, 16px, $black);
+  }
+
+  &__description {
+    width: 100%;
+    letter-spacing: -0.32px;
+    @include mixins.fonts-text($manrope-regular, 16px, $gray);
+  }
+
+  &__button {
+    cursor: pointer;
+    width: 100%;
+    padding: 14px 56px;
+    @include mixins.flex(row, center, center);
+    @include mixins.fonts-text($manrope-bold, 16px, $white);
+    @include mixins.box-style(1px solid $black, 48px, $black);
+  }
+
+  @media (max-width: $media-lg) {
+    padding: 32px 48px;
+    @include mixins.flex(column, flex-start, flex-start);
+
+    &__header {
+      gap: 0 40px;
+      @include mixins.flex(row, space-between, center);
+    }
+  }
+
+  @media (max-width: $media-md) {
+    padding: 32px 20px;
+    @include mixins.flex(column, flex-start, center);
+
+    &__header {
+      gap: 10px 0;
+      @include mixins.flex(column, flex-start, center);
+    }
+  }
+}
+
+.course:hover {
+  @include mixins.box-style(1px solid $secondary, 32px, $primary);
+}

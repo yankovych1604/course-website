@@ -1,0 +1,32 @@
+<div class="course" [routerLink]="'/course/'+course?.url">
+  <div class="course__header">
+    <div class="course__image-wrapper">
+      <img [src]="course?.image" [alt]="course?.url" class="course__image">
+    </div>
+    <div class="course__info">
+      <p class="course__category">курс</p>
+      <p class="course__title">{{ course?.title }}</p>
+    </div>
+  </div>
+
+  <div class="course__details">
+    <p class="course__duration">
+      <span class="course__duration-bold">Тривалість: </span>
+      <span>від {{course?.duration}} місяців</span>
+    </p>
+    <p class="course__difficulty">
+      <span class="course__difficulty-bold">Рівень складності: </span>
+      <span>{{ course?.difficulty_level }}</span>
+    </p>
+    <p class="course__instructor">
+      <span class="course__instructor-bold">Викладач: </span>
+      <span>{{ tutor?.fullName }}</span>
+    </p>
+  </div>
+
+  <p class="course__description">{{course?.description }}</p>
+
+  <button class="course__button" [routerLink]="'/course/'+course?.url">
+    <a class="course__link">Детальніше</a>
+  </button>
+</div>

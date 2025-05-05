@@ -1,0 +1,36 @@
+@use 'theme-material' as *;
+
+html, body {
+  height: 100%;
+}
+
+body {
+  color: black;
+  background-color: $primary;
+  margin: 0;
+  padding: 0 !important;
+}
+
+*, *::before, *::after, p, label {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
+}
+
+input[type="password"]:not(:placeholder-shown) {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+
+  font-variant: normal;
+  text-transform: none;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}

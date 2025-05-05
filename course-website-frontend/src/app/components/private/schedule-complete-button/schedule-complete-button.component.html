@@ -1,0 +1,5 @@
+<div class="complete__action">
+  <button class="complete__button" (click)="markTopicAsCompleted()" [disabled]="topic?.isCompleted">
+    {{ topic?.isCompleted ? 'Завершено' : 'Завершити' }}
+  </button>
+</div>

@@ -1,0 +1,173 @@
+@use "../../../../_system/_styles/_mixins.scss";
+@use "../../../../_system/_styles/_theme-material.scss" as *;
+
+.account__certificates {
+  width: 100%;
+  height: 100%;
+  gap: 20px 0;
+  @include mixins.flex(column, flex-start, flex-start);
+
+  &-heading {
+    line-height: 28px;
+    text-align: center;
+    @include mixins.fonts-text($manrope-bold, 24px, $darkgray);
+  }
+
+  &-text {
+    line-height: 22px;
+    @include mixins.fonts-text($manrope-medium, 18px, $darkgray);
+  }
+
+  &-content {
+    gap: 20px 0;
+    width: 100%;
+    height: 100%;
+    @include mixins.flex(column, flex-start, flex-start);
+  }
+
+  @media (max-width: $media-xl) {
+    &-content {
+      height: 672px;
+    }
+  }
+
+  @media (max-width: $media-md) {
+    &-heading {
+      line-height: 24px;
+      @include mixins.fonts-text($manrope-bold, 20px, $darkgray);
+    }
+
+    &-text {
+      line-height: 20px;
+      @include mixins.fonts-text($manrope-medium, 16px, $darkgray);
+    }
+
+    &-content {
+      height: 952px;
+    }
+  }
+}
+
+.account__certificate {
+  width: 100%;
+  padding: 10px 8px;
+  gap: 15px 15px;
+  display: grid;
+  align-items: center;
+  grid-template-rows: 2fr;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "heading details"
+    "actions actions";
+  @include mixins.box-style(1px solid $secondary, 10px, $primary);
+
+  &-heading {
+    gap: 6px 0;
+    padding: 10px 8px;
+    grid-area: heading;
+    @include mixins.flex(column, flex-start, flex-start);
+    @include mixins.box-style(1px solid $white, 10px, $white);
+  }
+
+  &-title {
+    @include mixins.fonts-text($manrope-bold, 16px, $darkgray);
+  }
+
+  &-date-bold {
+    @include mixins.fonts-text($manrope-bold, 16px, $darkgray);
+  }
+
+  &-date {
+    @include mixins.fonts-text($manrope-regular, 14px, $darkgray);
+  }
+
+  &-details {
+    gap: 6px 0;
+    padding: 10px 8px;
+    grid-area: details;
+    @include mixins.flex(column, flex-start, flex-start);
+    @include mixins.box-style(1px solid $white, 10px, $white);
+  }
+
+  &-difficulty-bold, &-duration-bold {
+    @include mixins.fonts-text($manrope-bold, 16px, $darkgray);
+  }
+
+  &-difficulty, &-duration {
+    @include mixins.fonts-text($manrope-regular, 14px, $darkgray);
+  }
+
+  &-actions {
+    gap: 10px 0;
+    grid-area: actions;
+    @include mixins.flex(column, flex-start, flex-start);
+  }
+
+  &-btn {
+    width: 100%;
+    cursor: pointer;
+    padding: 10px 8px;
+    @include mixins.fonts-text($manrope-bold, 16px, $darkgray);
+    @include mixins.box-style(1px solid $white, 10px, $white);
+  }
+
+  &-btn:hover {
+    @include mixins.box-style(1px solid $secondary, 10px, $white);
+  }
+
+  &-pagination {
+    width: 100%;
+    gap: 0 10px;
+    margin-top: auto;
+    @include mixins.flex(row, center, flex-start);
+
+    &-button {
+      cursor: pointer;
+      padding: 5px 10px;
+      @include mixins.fonts-text($manrope-bold, 14px, $darkgray);
+      @include mixins.box-style(2px solid $primary, 8px, $primary);
+    }
+
+    &-active {
+      border-bottom: 2px solid $secondary;
+    }
+  }
+
+  @media (max-width: $media-md) {
+    gap: 10px 10px;
+    grid-template-rows: repeat(3, auto);
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "heading"
+      "details"
+      "actions";
+
+    &-heading, &-details {
+      gap: 10px 0;
+    }
+
+    &-title {
+      @include mixins.fonts-text($manrope-bold, 14px, $darkgray);
+    }
+
+    &-date-bold {
+      @include mixins.fonts-text($manrope-bold, 14px, $darkgray);
+    }
+
+    &-date {
+      @include mixins.fonts-text($manrope-regular, 12px, $darkgray);
+    }
+
+    &-difficulty-bold, &-duration-bold {
+      @include mixins.fonts-text($manrope-bold, 14px, $darkgray);
+    }
+
+    &-difficulty, &-duration {
+      @include mixins.fonts-text($manrope-regular, 12px, $darkgray);
+    }
+
+    &-btn {
+      @include mixins.fonts-text($manrope-bold, 14px, $darkgray);
+    }
+  }
+}

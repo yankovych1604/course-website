@@ -1,0 +1,157 @@
+@use "../../../../_system/_styles/_mixins.scss";
+@use "../../../../_system/_styles/_theme-material.scss" as *;
+
+.account__courses {
+  width: 100%;
+  height: 100%;
+  gap: 20px 0;
+  @include mixins.flex(column, flex-start, flex-start);
+
+  &-heading {
+    line-height: 28px;
+    text-align: center;
+    @include mixins.fonts-text($manrope-bold, 24px, $darkgray);
+  }
+
+  &-text {
+    line-height: 22px;
+    @include mixins.fonts-text($manrope-medium, 18px, $darkgray);
+  }
+
+  &-content {
+    gap: 20px 0;
+    width: 100%;
+    height: 100%;
+    @include mixins.flex(column, flex-start, flex-start);
+  }
+
+  @media (max-width: $media-xl) {
+    &-content {
+      height: 672px;
+    }
+  }
+
+  @media (max-width: $media-md) {
+    &-heading {
+      line-height: 24px;
+      @include mixins.fonts-text($manrope-bold, 20px, $darkgray);
+    }
+
+    &-text {
+      line-height: 20px;
+      @include mixins.fonts-text($manrope-medium, 16px, $darkgray);
+    }
+
+    &-content {
+      height: 780px;
+    }
+  }
+}
+
+.account__course {
+  width: 100%;
+  padding: 10px 8px;
+  display: grid;
+  gap: 18px 18px;
+  align-items: center;
+  grid-template-rows: 2fr;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+      "heading progress"
+      "button button";
+  @include mixins.box-style(1px solid $secondary, 10px, $primary);
+
+  &-heading {
+    gap: 6px 0;
+    padding: 10px 8px;
+    grid-area: heading;
+    @include mixins.flex(column, flex-start, flex-start);
+    @include mixins.box-style(1px solid $white, 10px, $white);
+  }
+
+  &-title {
+    @include mixins.fonts-text($manrope-bold, 16px, $darkgray);
+  }
+
+  &-name {
+    @include mixins.fonts-text($manrope-regular, 14px, $darkgray);
+  }
+
+  &-button {
+    grid-area: button;
+    @include mixins.flex(row, flex-start, flex-start);
+  }
+
+  &-btn {
+    width: 100%;
+    cursor: pointer;
+    padding: 10px 8px;
+    @include mixins.fonts-text($manrope-bold, 16px, $darkgray);
+    @include mixins.box-style(1px solid $white, 10px, $white);
+
+    &-completed {
+      opacity: 1 !important;
+      @include mixins.box-style(1px solid $red, 10px, $red);
+      @include mixins.fonts-text($manrope-bold, 16px, $white);
+    }
+  }
+
+  &-btn:hover {
+    @include mixins.box-style(1px solid $secondary, 10px, $white);
+  }
+
+  &-btn:disabled {
+    opacity: 0.8;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  &-pagination {
+    width: 100%;
+    gap: 0 10px;
+    margin-top: auto;
+    @include mixins.flex(row, center, flex-start);
+
+    &-button {
+      cursor: pointer;
+      padding: 5px 10px;
+      @include mixins.fonts-text($manrope-bold, 14px, $darkgray);
+      @include mixins.box-style(2px solid $primary, 8px, $primary);
+    }
+
+    &-active {
+      border-bottom: 2px solid $secondary;
+    }
+  }
+
+  @media (max-width: $media-md) {
+    gap: 10px 10px;
+    grid-template-rows: repeat(3, auto);
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "heading"
+      "progress"
+      "button";
+
+    &-heading {
+      padding: 5px 4px;
+    }
+
+    &-title {
+      @include mixins.fonts-text($manrope-bold, 14px, $darkgray);
+    }
+
+    &-name {
+      @include mixins.fonts-text($manrope-regular, 12px, $darkgray);
+    }
+
+    &-btn {
+      padding: 5px 4px;
+      @include mixins.fonts-text($manrope-bold, 14px, $darkgray);
+
+      &-completed {
+        @include mixins.fonts-text($manrope-bold, 14px, $white);
+      }
+    }
+  }
+}

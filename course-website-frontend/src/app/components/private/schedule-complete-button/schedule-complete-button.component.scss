@@ -1,0 +1,31 @@
+@use "../../../_system/_styles/_mixins.scss";
+@use "../../../_system/_styles/_theme-material.scss" as *;
+
+.complete__button {
+  cursor: pointer;
+  padding: 10px 8px;
+  @include mixins.fonts-text($manrope-bold, 16px, $gunmetal);
+  @include mixins.box-style(1px solid $primary, 10px, $primary);
+}
+
+.complete__button:hover {
+  @include mixins.box-style(1px solid $secondary, 10px, $primary);
+}
+
+.complete__button:disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+  box-shadow: 0 4px 0 0 $red;
+}
+
+@media (max-width: $media-md) {
+  .complete__action {
+    width: 100%;
+  }
+
+  .complete__button {
+    width: 100%;
+    padding: 5px 4px;
+    @include mixins.fonts-text($manrope-bold, 14px, $gunmetal);
+  }
+}

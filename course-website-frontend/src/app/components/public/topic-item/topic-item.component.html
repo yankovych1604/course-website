@@ -1,0 +1,27 @@
+<div class="topic__item" (click)="openDetailsOfModule()">
+  <div class="topic">
+    <div class="topic__header">
+      <p class="topic__title">{{ module?.title }}</p>
+      <p class="topic__count">{{ module?.countOfTopics }} {{ (module?.countOfTopics ?? 0) > 1 ? 'topics' : 'topic' }}</p>
+    </div>
+
+    <button class="topic__toggle" [ngClass]="{'topic__toggle-active': isDetailsOpened}">
+      <div class="topic__toggle-icon">
+        <span class="topic__toggle-line topic__toggle-horizontalLine"></span>
+        <span class="topic__toggle-line topic__toggle-verticalLine"></span>
+      </div>
+    </button>
+  </div>
+
+  <div class="topic__details" #detailsContent [style.height.px]="detailsHeight">
+    <div class="topic__description">
+      <p class="topic__text">{{ module?.description }}</p>
+
+      <p class="topic__subtopics-title">Теми</p>
+
+      <ul class="topic__subtopics-list">
+        <li class="topic__subtopic" *ngFor="let topic of topics"> {{ topic.title }}</li>
+      </ul>
+    </div>
+  </div>
+</div>

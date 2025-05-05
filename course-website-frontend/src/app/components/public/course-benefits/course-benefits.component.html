@@ -1,0 +1,12 @@
+<div class="benefits">
+  <p class="benefits-title">А також</p>
+
+  <ul class="benefits-list">
+    <li class="benefits-item" *ngFor="let benefit of benefits">
+      <div class="benefits-icon">
+        <img src="assets/icons/check-icon.png" alt="check" class="benefits-image">
+      </div>
+      <span class="benefits-text">{{ benefit }}</span>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,56 @@
+<div class="sections">
+  <section class="section1">
+    <div class="section1__container">
+      <app-intro-block [intro]="intro" [course]="course"  [courseProgram]="courseProgram" />
+    </div>
+  </section>
+
+  <section class="section2">
+    <div class="section2__container">
+      <div class="section2__heading">
+        <div class="section2__heading-text">
+          <p class="section2__subtitle">Що ти вивчатимеш?</p>
+          <h2 class="section2__title">Програма курсу</h2>
+        </div>
+      </div>
+
+      <div class="section2__content">
+        <app-course-module [modules]="modules" />
+
+        <div class="section2__info">
+          <app-course-stats class="section2__width" [courseProgram]="courseProgram" />
+
+          <app-course-benefits class="section2__width" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section3">
+    <div class="section3__container">
+      <div class="section3__heading">
+        <div class="section3__heading-text">
+          <p class="section3__subtitle">Від нуля до першого оферу</p>
+          <h2 class="section3__title">Як ти станеш {{ course?.title }} з Course?</h2>
+        </div>
+      </div>
+
+      <app-course-steps class="section3__width" [course]="course" />
+    </div>
+  </section>
+
+  <section class="section4">
+    <div class="section4__container">
+      <div class="section4__heading">
+        <p class="section4__subtitle">FAQ</p>
+        <h2 class="section4__title">Нас часто питають</h2>
+      </div>
+
+      <div class="section4__content">
+        <div class="section4__list">
+          <app-faq-item [faq]="faq" *ngFor="let faq of faqsList" />
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

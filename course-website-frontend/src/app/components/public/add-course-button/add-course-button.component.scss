@@ -1,0 +1,33 @@
+@use "../../../_system/_styles/_mixins.scss";
+@use "../../../_system/_styles/_theme-material.scss" as *;
+
+.button {
+  z-index: 1;
+  cursor: pointer;
+  position: relative;
+  @include mixins.flex(row, center, center);
+  @include mixins.box-style(1px solid $purple, 16px, $purple);
+
+  &-text {
+    padding: 24px 64px;
+    @include mixins.fonts-text($manrope-bold, 16px, $white);
+  }
+
+  @media (max-width: $media-lg) {
+    &-text {
+      padding: 24px 48px;
+    }
+  }
+
+  @media (max-width: $media-md) {
+    &-text {
+      padding: 18px 28px;
+    }
+  }
+}
+
+.button:disabled {
+  opacity: 0.8;
+  cursor: not-allowed;
+  pointer-events: none;
+}

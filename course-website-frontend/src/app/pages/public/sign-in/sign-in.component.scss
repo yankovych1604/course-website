@@ -1,0 +1,225 @@
+@use "../../../_system/_styles/_mixins.scss";
+@use "../../../_system/_styles/_theme-material.scss" as *;
+
+.sign-in {
+  width: 100%;
+  padding-top: 78px;
+  margin-bottom: 80px;
+  background-color: $primary;
+
+  &__container {
+    max-width: 680px;
+    width: 100%;
+    margin: 80px auto 0;
+    padding: 0 40px;
+    @include mixins.flex(row, flex-start, flex-start);
+  }
+
+  &__block {
+    width: 100%;
+    gap: 40px 0;
+    padding: 40px 40px;
+    @include mixins.flex(column, flex-start, center);
+    @include mixins.box-style(1px solid $white, 32px, $white);
+  }
+
+  &__header {
+    width: 100%;
+    @include mixins.flex(row, center, flex-start);
+
+    &-title {
+      line-height: 22px;
+      letter-spacing: -0.72px;
+      @include mixins.fonts-text($manrope-bold, 24px, $darkgray);
+    }
+  }
+
+  &__form {
+    width: 100%;
+    gap: 20px 0;
+    @include mixins.flex(column, flex-start, flex-start);
+  }
+
+  &__field {
+    width: 100%;
+    gap: 10px 0;
+    @include mixins.flex(column, flex-start, flex-start);
+  }
+
+  &__label {
+    line-height: 14px;
+    @include mixins.fonts-text($manrope-bold, 16px, $darkgray);
+  }
+
+  &__input-wrapper {
+    width: 100%;
+    height: 42px;
+    cursor: pointer;
+    padding: 10px 8px;
+    @include mixins.flex(row, space-between, center);
+    @include mixins.box-style(1px solid $primary, 10px, $primary);
+  }
+
+  &__input {
+    cursor: pointer;
+    @include mixins.fonts-text($manrope-medium, 16px, $gunmetal);
+    @include mixins.box-style(1px solid $primary, 10px, $primary);
+
+    &-email {
+      width: 100%;
+    }
+
+    &-password {
+      width: calc((100% - 24px - 16px));
+    }
+  }
+
+  &__toggle-password {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    @include mixins.box-style(none, 0px, transparent);
+  }
+
+  &__toggle-icon {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__button {
+    width: 100%;
+    @include mixins.flex(row, flex-start, flex-start);
+    @include mixins.box-style(1px solid $red, 10px, $red);
+
+    &-text {
+      width: 100%;
+      cursor: pointer;
+      padding: 10px 8px;
+      text-decoration: none;
+      @include mixins.fonts-text($manrope-bold, 16px, $white);
+    }
+  }
+
+  &__error {
+    width: 100%;
+
+    &-text {
+      @include mixins.fonts-text($manrope-medium, 12px, $red);
+    }
+  }
+
+  &__error-border {
+    border: 1px solid $red;
+  }
+
+  &__massage {
+    width: 100%;
+    height: 19px;
+  }
+
+  &__notSuccess {
+    width: 100%;
+
+    &-text {
+      text-align: center;
+      @include mixins.fonts-text($manrope-bold, 14px, $red);
+    }
+  }
+
+  &__footer {
+    width: 100%;
+    @include mixins.flex(row, center, flex-start);
+
+    &-title {
+      text-align: center;
+      @include mixins.fonts-text($manrope-medium, 16px, $darkgray);
+    }
+
+    &-link {
+      cursor: pointer;
+      text-decoration: none;
+      @include mixins.fonts-text($manrope-bold, 16px, $red);
+    }
+  }
+
+  @media (max-width: $media-xxl) {
+    &__container {
+      padding: 0 30px;
+    }
+
+    &__block {
+      padding: 30px 30px;
+    }
+  }
+
+  @media (max-width: $media-lg) {
+    margin-bottom: 56px;
+
+    &__container {
+      padding: 0 20px;
+      margin: 56px auto 0;
+    }
+
+    &__block {
+      padding: 20px 20px;
+    }
+  }
+
+  @media (max-width: $media-md) {
+    &__header-title {
+      line-height: 18px;
+      @include mixins.fonts-text($manrope-bold, 20px, $darkgray);
+    }
+
+    &__label {
+      line-height: 12px;
+      @include mixins.fonts-text($manrope-bold, 14px, $darkgray);
+    }
+
+    &__input-wrapper {
+      height: 32px;
+      padding: 5px 4px;
+    }
+
+    &__input {
+      @include mixins.fonts-text($manrope-medium, 14px, $gunmetal);
+
+      &-password {
+        width: calc((100% - 18px - 10px));
+      }
+    }
+
+    &__toggle-password {
+      width: 18px;
+      height: 18px;
+    }
+
+    &__button-text {
+      padding: 5px 4px;
+    }
+
+    &__notSuccess-text {
+      @include mixins.fonts-text($manrope-bold, 12px, $red);
+    }
+
+    &__footer {
+      &-title {
+        @include mixins.fonts-text($manrope-medium, 14px, $darkgray);
+      }
+
+      &-link {
+        @include mixins.fonts-text($manrope-bold, 14px, $red);
+      }
+    }
+  }
+
+  @media (max-width: $media-sm) {
+    &__container {
+      padding: 0 10px;
+    }
+
+    &__block {
+      padding: 20px 10px;
+    }
+  }
+}

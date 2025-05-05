@@ -1,0 +1,29 @@
+<div class="account__courses">
+  <h2 class="account__courses-heading">Мої курси</h2>
+
+  <div class="account__courses-content"  *ngIf="selectedCoursesData && selectedCoursesData.length > 0">
+
+    <div class="account__course" *ngFor="let course of paginatedCourses">
+      <div class="account__course-heading">
+        <p class="account__course-title">Курс</p>
+        <p class="account__course-name">{{ course.meta.title }}</p>
+      </div>
+
+      <app-account-progress-bar [progress]="getCourseProgress(course.program)" />
+
+      <div class="account__course-button">
+        <button class="account__course-btn" [ngClass]="{'account__course-btn-completed': isCertificateIssued(course.program.id)}" [disabled]="getCourseProgress(course.program) < 100 || isCertificateIssued(course.program.id)" (click)="onCompleteCourse(course.meta.id, course.program.id)">
+          {{ isCertificateIssued(course.program.id) ? 'Курс пройдено' : 'Завершити курс' }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="account__course-pagination" *ngIf="totalPages > 1">
+    <button class="account__course-pagination-button" *ngFor="let page of [].constructor(totalPages); let i = index" [class.account__course-pagination-active]="currentPage === (i + 1)" (click)="changePage(i + 1)">
+      {{ i + 1 }}
+    </button>
+  </div>
+
+  <p class="account__courses-text" *ngIf="userData?.selectedCourses?.length === 0">На жаль, ти ще не маєш курсів</p>
+</div>

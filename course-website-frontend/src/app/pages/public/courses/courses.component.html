@@ -1,0 +1,29 @@
+<section class="section">
+  <div class="section__container">
+    <div class="section__header">
+      <div class="section__header-title">
+        <h2 class="section__header-heading">Перелік доступних напрямків</h2>
+      </div>
+
+      <div class="section__header-filters">
+        <div class="section__header-dropdown">
+          <p class="section__header-selected" (click)="toggleDropdown()">{{ selectedSortLabel }}</p>
+
+          <div class="section__header-image" (click)="toggleDropdown()">
+            <img src="assets/icons/dropdown-arrow-icon.png" alt="arrow" class="section__header-icon">
+          </div>
+
+          <div class="section__header-menu" *ngIf="isFiltersOpened">
+            <button class="section__header-button" (click)="sortCourses('default', 'За замовчуванням')">За замовчуванням</button>
+            <button class="section__header-button" (click)="sortCourses('longest', 'Від найдовших до найкоротших')">Від найдовших до найкоротших</button>
+            <button class="section__header-button" (click)="sortCourses('shortest', 'Від найкоротших до найдовших')">Від найкоротших до найдовших</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section__content">
+      <app-coursespage-card [course]="course" *ngFor="let course of sortedCoursesList" />
+    </div>
+  </div>
+</section>

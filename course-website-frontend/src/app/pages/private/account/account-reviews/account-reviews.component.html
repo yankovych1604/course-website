@@ -1,0 +1,76 @@
+<div class="account__reviews">
+  <h2 class="account__reviews-heading">Залишити відгук</h2>
+
+  <div class="account__reviews-content" *ngIf="userData.selectedCourses && userData.selectedCourses.length > 0">
+    <form class="account__reviews-form" [formGroup]="reviewForm" (ngSubmit)="onSubmitReview()" >
+      <div class="account__reviews-list-wrapper">
+        <div class="account__reviews-list" (click)="onCourseListClick(); $event.stopPropagation()">
+          <div class="account__reviews-dropdown" [ngClass]="{'account__reviews-dropdown-error': isFieldInvalid('courseId')}">
+            <p class="account__reviews-selected" (click)="toggleDropdown()">{{ selectedLabel }}</p>
+
+            <div class="account__reviews-image" (click)="toggleDropdown()" *ngIf="completedCourses && completedCourses.length > 1">
+              <img src="assets/icons/dropdown-arrow-icon.png" alt="arrow" class="account__reviews-icon">
+            </div>
+
+            <div class="account__reviews-menu" *ngIf="isDropdownOpened">
+              <button class="account__reviews-button" *ngFor="let course of completedCourses" (click)="selectCourse(course.id, course.title); $event.stopPropagation()">
+                {{ course.title }}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="account__reviews-error" *ngIf="isFieldInvalid('courseId')">
+          <p class="account__reviews-error-text">
+            Потрібно обрати курс
+          </p>
+        </div>
+      </div>
+
+      <div class="account__reviews-rating-wrapper" *ngIf="courseId">
+        <div class="account__reviews-rating" [ngClass]="{'account__reviews-rating-error': isFieldInvalid('rating')}">
+          <label class="account__reviews-rating-label">Оцінка:</label>
+          <div class="account__reviews-stars">
+            <div class="account__reviews-star-wrapper" *ngFor="let star of stars; index as i">
+            <span class="account__reviews-star" [class.account__reviews-star-active]="i < reviewForm.get('rating')?.value" (click)="setRating(i + 1)">
+              ★
+            </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="account__reviews-error" *ngIf="isFieldInvalid('rating')">
+          <p class="account__reviews-error-text">
+            Потрібно обрати оцінку
+          </p>
+        </div>
+      </div>
+
+      <div class="account__reviews-description" *ngIf="courseId && reviewForm.get('rating')?.value">
+        <textarea formControlName="description" placeholder="Ваш відгук..." class="account__reviews-textarea" [ngClass]="{'account__reviews-textarea-error': isFieldInvalid('description')}"></textarea>
+
+        <div class="account__reviews-error" *ngIf="isFieldInvalid('description')">
+          <p class="account__reviews-error-text">
+            Відгук має містити від 10 до 500 символів
+          </p>
+        </div>
+      </div>
+
+      <div class="account__reviews-snackbar" *ngIf="showSuccessMessage">
+        <div class="account__reviews-snackbar-container">
+          <p class="account__reviews-snackbar-text">Відгук успішно надіслано!</p>
+
+          <div class="account__reviews-snackbar-separator"></div>
+
+          <div class="account__reviews-snackbar-close" (click)="closeReviewSuccessMessage()">
+            <p class="account__reviews-snackbar-close-text">Закрити</p>
+          </div>
+        </div>
+      </div>
+
+      <button class="account__reviews-submit">Надіслати відгук</button>
+    </form>
+  </div>
+
+  <p class="account__reviews-text" *ngIf="!userData.selectedCourses || userData.selectedCourses.length === 0">На жаль, ти ще не маєш сертифікатів</p>
+</div>

@@ -1,0 +1,63 @@
+<div class="sign-in">
+  <div class="sign-in__container">
+    <div class="sign-in__block">
+      <div class="sign-in__header">
+        <h2 class="sign-in__header-title">Вхід</h2>
+      </div>
+
+      <form class="sign-in__form" [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+        <div class="sign-in__field">
+          <label for="sign-in__email" class="sign-in__label">Пошта</label>
+          <div class="sign-in__input-wrapper" [ngClass]="{'sign-in__error-border': isFieldInvalid('email')}">
+            <input formControlName="email" type="text" id="sign-in__email" class="sign-in__input sign-in__input-email" placeholder="Enter email">
+          </div>
+          <div class="sign-in__error" *ngIf="isFieldInvalid('email')">
+            <p class="sign-in__error-text" *ngIf="getFieldErrors('email')?.['required']">
+              Електронна пошта є обов’язковою
+            </p>
+
+            <p class="sign-in__error-text" *ngIf="getFieldErrors('email')?.['pattern']">
+              Електронна пошта має бути у форматі username&#64;gmail.com (ukr.net, icloud.com)
+            </p>
+          </div>
+        </div>
+
+        <div class="sign-in__field">
+          <label for="sign-in__password" class="sign-in__label">Пароль</label>
+          <div class="sign-in__input-wrapper" [ngClass]="{'sign-in__error-border': isFieldInvalid('password')}">
+            <input formControlName="password" [type]="isPasswordVisible ? 'text' : 'password'" id="sign-in__password" class="sign-in__input sign-in__input-password" placeholder="Enter password">
+
+            <button type="button" class="sign-in__toggle-password" (click)="showPassword()">
+              <img src="assets/icons/password-lock-icon.png" alt="password-lock-icon" class="sign-in__toggle-icon" *ngIf="!isPasswordVisible">
+              <img src="assets/icons/password-unlock-icon.png" alt="password-unlock-icon" class="sign-in__toggle-icon" *ngIf="isPasswordVisible">
+            </button>
+          </div>
+          <div class="sign-in__error" *ngIf="isFieldInvalid('password')">
+            <p class="sign-in__error-text" *ngIf="getFieldErrors('password')?.['required'] || getFieldErrors('password')?.['minlength']">
+              Пароль є обов’язковим
+            </p>
+          </div>
+        </div>
+
+        <div class="sign-in__massage">
+          <div class="sign-in__notSuccess" *ngIf="!isSignInSuccess">
+            <p class="sign-in__notSuccess-text">
+              Не вірний пароль або пошта
+            </p>
+          </div>
+        </div>
+
+        <button type="submit" class="sign-in__button">
+          <a class="sign-in__button-text">Увійти</a>
+        </button>
+      </form>
+
+      <div class="sign-in__footer">
+        <p class="sign-in__footer-title">
+          Ще немає акаунту?
+          <a class="sign-in__footer-link" [routerLink]="'/register'">Зареєструватися</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

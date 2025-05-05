@@ -1,0 +1,76 @@
+<div class="sections">
+  <section class="section-reviews">
+    <div class="section-reviews__container">
+
+      <div class="section-reviews__header">
+        <div class="section-reviews__heading">
+          <h2 class="section-reviews__heading-text">Відгуки про курси</h2>
+        </div>
+
+        <div class="section-reviews__description">
+          <p class="section-reviews__description-text">
+            Ознайомся з думками інших студентів перед початком навчання!
+          </p>
+        </div>
+      </div>
+
+      <div class="section-reviews__courses">
+        <div class="section-reviews__course" *ngFor="let group of groupedReviews">
+          <div class="section-reviews__course-header">
+            <h3 class="section-reviews__course-title">{{ group.courseTitle }}</h3>
+            <p class="section-reviews__course-rating" *ngIf="group.reviews.length > 0">
+              Середня оцінка:
+              {{ group.avgRating.toFixed(1) }}/5.0
+            </p>
+          </div>
+
+          <div class="section-reviews__no-reviews" *ngIf="group.reviews.length === 0">
+            <p class="section-reviews__no-reviews-text">
+              Ще немає відгуків для цього курсу.
+            </p>
+          </div>
+
+          <div class="section-reviews__list" *ngIf="group.reviews.length > 0">
+            <div class="section-reviews__item" *ngFor="let review of group.paginatedReviews">
+              <div class="section-reviews__item-header">
+                <div class="section-reviews__item-avatar">
+                  <p class="section-reviews__item-avatar-icon">{{ review.firstName.charAt(0).toUpperCase() }}</p>
+                </div>
+
+                <div class="section-reviews__item-userdata">
+                  <span class="section-reviews__item-user">{{ review.firstName }} {{ review.lastName }}</span>
+                  <span class="section-reviews__item-email">{{ review.email }}</span>
+                </div>
+              </div>
+
+              <p class="section-reviews__item-description">
+                {{ review.description }}
+              </p>
+
+              <div class="section-reviews__item-meta">
+                <p class="section-reviews__item-rating">
+                  <span class="section-reviews__item-rating-bold">Оцінка:</span>
+                  {{ review.rating }}/5
+                </p>
+
+                <p class="section-reviews__item-date">
+                  <span class="section-reviews__item-date-bold">Дата:</span>
+                  {{ review.dateFormatted }}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="section-reviews__pagination" *ngIf="group.totalPages >= 2">
+            <button *ngFor="let page of [].constructor(group.totalPages); let i = index" class="section-reviews__pagination-button" [ngClass]="{ 'section-reviews__pagination-button-active': group.currentPage === (i + 1) }" (click)="changePage(group.courseId, i + 1)">
+              {{ i + 1 }}
+            </button>
+          </div>
+
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+</div>

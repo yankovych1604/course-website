@@ -1,0 +1,21 @@
+<div class="schedule__item">
+  <p class="schedule__date">{{ topic?.deadline }}</p>
+
+  <div class="schedule__line"></div>
+
+  <div class="schedule__tasks">
+    <div class="schedule__task">
+      <div class="schedule__task-info">
+        <div class="schedule__task-icon">
+          <img src="assets/icons/homework-icon.png" alt="homework" class="schedule__task-img">
+        </div>
+
+        <div class="schedule__task-text">
+          <p class="schedule__task-title">{{ topic?.title }}</p>
+        </div>
+      </div>
+
+      <app-schedule-complete-button class="schedule__width" [topic]="topic" [programId]="programId" (topicCompleted)="onTopicCompleted($event)" />
+    </div>
+  </div>
+</div>

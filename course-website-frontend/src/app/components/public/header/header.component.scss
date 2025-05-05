@@ -1,0 +1,178 @@
+@use "../../../_system/_styles/_mixins.scss";
+@use "../../../_system/_styles/_material-overrides.scss";
+@use "../../../_system/_styles/_theme-material.scss" as *;
+
+.container {
+  width: 100%;
+  background-color: $white;
+  position: fixed;
+  z-index: 999;
+}
+
+.header {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 40px 0 40px;
+  width: 100%;
+  height: 78px;
+  @include mixins.flex(row, space-between, center);
+
+
+  &__logo {
+    gap: 0 20px;
+    margin-right: 6px;
+    @include mixins.flex(row, flex-start, center);
+  }
+
+  &__link {
+    gap: 0 15px;
+    height: 48px;
+    cursor: pointer;
+    text-decoration: none;
+    @include mixins.flex(row, space-between, center);
+  }
+
+  &__logo-img {
+    width: 48px;
+    height: 48px;
+  }
+
+  &__logo-text {
+    width: 81px;
+    height: 36px;
+    @include mixins.fonts-text($manrope-bold, 14px, $black);
+  }
+
+  &__option {
+    text-decoration: none;
+    @include mixins.fonts-text($manrope-bold, 14px, $black);
+  }
+
+  @media (max-width: $media-xxl) {
+    padding: 0 30px 0 30px;
+
+    &__course-select {
+      width: 105px;
+    }
+  }
+
+  @media (max-width: $media-lg) {
+    padding: 0 20px 0 20px;
+
+    &__course-select {
+      width: 95px;
+    }
+
+    &__course-select {
+      font-size: 14px;
+    }
+  }
+
+  @media (max-width: $media-md) {
+    &__logo {
+      gap: 0 10px;
+    }
+  }
+
+  @media (max-width: $media-sm) {
+    padding: 0 10px 0 10px;
+
+    &__logo {
+      gap: 0 5px;
+    }
+
+    &__link {
+      gap: 0 10px;
+    }
+
+    &__course-select {
+      width: 90px;
+    }
+  }
+}
+
+.navigation {
+  margin-left: 6px;
+  position: relative;
+  @include mixins.flex(row, flex-start, center);
+
+  &__list {
+    gap: 0 2px;
+    list-style: none;
+    @include mixins.flex(row, flex-start, flex-start);
+  }
+
+  &__item {
+    width: auto;
+    height: 48px;
+    @include mixins.flex(row, center, center);
+
+    &-link {
+      cursor: pointer;
+      padding: 12px 10px;
+      text-decoration: none;
+      @include mixins.fonts-text($manrope-bold, 16px, $black);
+      @include mixins.box-style(1px solid transparent, 0px, transparent);
+    }
+
+    &-link:hover {
+      @include mixins.box-style(1px solid $secondary, 10px, $primary);
+    }
+  }
+
+  &__link {
+    width: 32px;
+    height: 48px;
+    display: none;
+    cursor: pointer;
+
+    &-img {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  @media (max-width: $media-lg) {
+    &__list {
+      display: none;
+    }
+
+    &__link {
+      @include mixins.flex(row, flex-start, center);
+    }
+  }
+}
+
+.mobile__navigation {
+  width: 100%;
+  padding: 20px;
+  position: fixed;
+  top: 78px;
+  left: 0;
+  z-index: 999;
+  @include mixins.box-style(1px solid $primary, 0px, $white);
+
+  &-list {
+    list-style: none;
+    @include mixins.flex(column, flex-start, flex-start);
+  }
+
+  &-item {
+    width: 100%;
+    height: 48px;
+    @include mixins.flex(row, flex-start, center);
+  }
+
+  &-link {
+    width: 100%;
+    cursor: pointer;
+    text-align: center;
+    padding: 12px 18px;
+    text-decoration: none;
+    @include mixins.fonts-text($manrope-bold, 14px, $black);
+  }
+
+  &-link:hover {
+    @include mixins.box-style(1px solid $secondary, 10px, $primary);
+  }
+}

@@ -1,0 +1,14 @@
+<div class="modules">
+  <div class="modules-list">
+    <ng-container *ngFor="let module of modules; let i = index">
+      <ng-container *ngIf="i < visibleCount">
+        <app-topic-item [module]="module" [topics]="module.topics"></app-topic-item>
+      </ng-container>
+    </ng-container>
+  </div>
+  <button class="button" (click)="toggleModulesVisibility()">
+    <span class="button-text">
+      {{ isShowMoreClicked ? 'Покази менше' : 'Покази більше' }}
+    </span>
+  </button>
+</div>

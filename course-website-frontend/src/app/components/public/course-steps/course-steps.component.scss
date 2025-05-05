@@ -1,0 +1,95 @@
+@use "../../../_system/_styles/_mixins.scss";
+@use "../../../_system/_styles/_theme-material.scss" as *;
+
+.steps__container {
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  justify-content: space-between;
+  grid-template-columns: repeat(5, 200px);
+  grid-template-areas: "step1 step2 step3 step4 step5";
+}
+
+.step:nth-child(1) {
+  grid-area: step1;
+}
+
+.step:nth-child(2) {
+  grid-area: step2;
+}
+
+.step:nth-child(3) {
+  grid-area: step3;
+}
+
+.step:nth-child(4) {
+  grid-area: step4;
+}
+
+.step:nth-child(5) {
+  grid-area: step5;
+}
+
+.step {
+  @include mixins.box-style(1px solid $primary, 24px, $primary);
+
+  &__content {
+    gap: 16px 0;
+    padding: 25px;
+    @include mixins.flex(column, flex-start, flex-start);
+  }
+
+  &__number {
+    width: 40px;
+    height: 40px;
+    @include mixins.flex(row, center, center);
+    @include mixins.box-style(1px solid $white, 50%, $white);
+    @include mixins.fonts-text($manrope-bold, 16px, $gunmetal);
+  }
+
+  &__title {
+    letter-spacing: -1.25px;
+    @include mixins.fonts-text($manrope-bold, 20px, $darkgray);
+  }
+
+  &__description {
+    letter-spacing: -0.56px;
+    @include mixins.fonts-text($manrope-medium, 16px, $gunmetal);
+  }
+}
+
+.step:last-child {
+  @include mixins.box-style(1px solid $purple, 24px, $purple);
+
+  .step__number {
+    @include mixins.fonts-text($manrope-bold, 16px, $white);
+    @include mixins.box-style(none, 50%, $frost-white);
+  }
+
+  .step__title {
+    @include mixins.fonts-text($manrope-bold, 20px, $white);
+  }
+
+  .step__description {
+    @include mixins.fonts-text($manrope-medium, 16px, $white);
+  }
+}
+
+@media (max-width: $media-xxl) {
+  .steps__container {
+    display: grid;
+    gap: 15px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: "step1 . step2" ". step5 ." "step3 . step4";
+  }
+}
+
+@media (max-width: $media-lg) {
+  .steps__container {
+    display: grid;
+    gap: 15px;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-areas: "step1" "step2" "step3" "step4" "step5";
+  }
+}

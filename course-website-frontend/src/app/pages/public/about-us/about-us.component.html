@@ -1,0 +1,22 @@
+<div class="sections">
+
+  <section class="section1">
+    <div class="section1__container">
+      <div class="section1__header">
+        <div class="section1__heading">
+          <h2 class="section1__heading-text">Дійсно круті речі потрібно створювати разом з крутими людьми. Ми любимо те, чим займаємося і тому в роботі викладаємося на повну.</h2>
+        </div>
+
+        <div class="section1__description">
+          <h2 class="section1__description-title">Про Course academy</h2>
+          <p class="section1__description-text">Команда Course academy складається зі спеціалістів, які вміють розвивати як технічні навички, так і особистісні якості. Наші ментори працюють в IT і мають не тільки хороші теоретичні, але й практичні знання. Вони знають, що зараз актуально на ринку, і дійсно мають чим поділитися. Ну, і, звісно, наші HR friends допоможуть отримати роботу твоєї мрії.</p>
+        </div>
+      </div>
+
+      <div class="section1__content">
+        <app-tutor-card [tutor]="tutor" *ngFor="let tutor of tutorsList" />
+      </div>
+    </div>
+  </section>
+
+</div>

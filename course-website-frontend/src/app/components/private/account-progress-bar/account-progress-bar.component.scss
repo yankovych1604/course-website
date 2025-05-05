@@ -1,0 +1,44 @@
+@use "../../../_system/_styles/_mixins.scss";
+@use "../../../_system/_styles/_theme-material.scss" as *;
+
+.progress {
+  gap: 6px 0;
+  padding: 10px 8px;
+  grid-area: progress;
+  @include mixins.flex(column, flex-start, flex-start);
+  @include mixins.box-style(1px solid $white, 10px, $white);
+
+  &__text {
+    @include mixins.fonts-text($manrope-bold, 16px, $darkgray);
+  }
+
+  &__container {
+    width: 100%;
+    height: 19px;
+    overflow: hidden;
+    position: relative;
+    @include mixins.box-style(2px solid $secondary, 20px, transparent);
+  }
+
+  &__bar {
+    width: 0;
+    height: 100%;
+    background-color: $red;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: width 2s ease;
+  }
+
+  @media (max-width: $media-md) {
+    padding: 5px 4px;
+
+    &__text {
+      @include mixins.fonts-text($manrope-bold, 14px, $darkgray);
+    }
+
+    &__container {
+      height: 16.5px;
+    }
+  }
+}

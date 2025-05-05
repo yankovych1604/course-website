@@ -1,0 +1,109 @@
+<div class="schedule">
+  <section class="schedule__container">
+    <div class="schedule__sidebar">
+      <div class="schedule__sidebar-heading" *ngIf="userCourses.length === 0">
+        <h2 class="schedule__sidebar-title">На жаль, у вас ще немає доданих курсів</h2>
+
+        <p class="schedule__sidebar-subtitle">
+          Тут зʼявиться ваш розклад занять, щойно ви приєднаєтесь до одного з доступних курсів.
+        </p>
+
+        <div class="schedule__sidebar-steps">
+          <p class="schedule__sidebar-step"><span>Крок 1.</span>Перейдіть на головну сторінку та перегляньте всі доступні курси. Ми пропонуємо широкий вибір програм — від базових до поглиблених, які охоплюють найактуальніші теми.</p>
+
+          <p class="schedule__sidebar-step"><span>Крок 2.</span>Ознайомтесь із детальним описом курсу: структура модулів, теми, дедлайни та особливості проходження — усе це допоможе вам зробити свідомий вибір.</p>
+
+          <p class="schedule__sidebar-step"><span>Крок 3.</span>Оберіть курс, який найбільше відповідає вашим цілям і рівню підготовки. Наші програми створені фахівцями з реального досвіду, тому ви отримаєте не лише знання, а й практичні навички.</p>
+
+          <p class="schedule__sidebar-step"><span>Крок 4.</span>Долучайтесь у один клік — і ваш персональний розклад навчання буде сформовано автоматично. Не відкладайте розвиток — зробіть перший крок вже сьогодні!</p>
+        </div>
+
+        <button class="schedule__sidebar-button" [routerLink]="''">Перейти на головну</button>
+      </div>
+
+      <div class="schedule__controls" *ngIf="userCourses.length > 0">
+        <div class="schedule__filters">
+          <h2 class="schedule__filters-text">Фільтр за періодом</h2>
+
+          <div class="schedule__filters-list">
+            <div class="schedule__filters-dropdown">
+              <p class="schedule__filters-selected" (click)="toggleDropdownFilters()">{{ selectedSortLabel }}</p>
+
+              <div class="schedule__filters-image" (click)="toggleDropdownFilters()">
+                <img src="assets/icons/dropdown-arrow-icon.png" alt="arrow" class="schedule__filters-icon">
+              </div>
+
+              <div class="schedule__filters-menu" *ngIf="isFiltersOpened">
+                <button class="schedule__filters-button" [routerLink]="['/schedule', selectedCourse?.meta?.url, 'filter', '7-days']">7 днів</button>
+                <button class="schedule__filters-button" [routerLink]="['/schedule', selectedCourse?.meta?.url, 'filter', '14-days']">14 днів</button>
+                <button class="schedule__filters-button" [routerLink]="['/schedule', selectedCourse?.meta?.url, 'filter', '30-days']">30 днів</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="schedule__courses">
+          <h2 class="schedule__courses-text">Мої курси</h2>
+
+          <div class="schedule__courses-list">
+            <div class="schedule__courses-dropdown">
+              <p class="schedule__courses-selected" (click)="toggleDropdownCourses()">{{ selectedCourse?.meta?.title }}</p>
+
+              <div class="schedule__courses-image" (click)="toggleDropdownCourses()"  *ngIf="userCourses && userCourses.length > 1">
+                <img src="assets/icons/dropdown-arrow-icon.png" alt="arrow" class="schedule__courses-icon">
+              </div>
+
+              <div class="schedule__courses-menu" *ngIf="isCoursesOpened && selectedCoursesData && selectedCoursesData.length > 1">
+                <button class="schedule__courses-button" *ngFor="let course of selectedCoursesData" [routerLink]="['/schedule', course.meta.url, 'filter', '7-days']">
+                  {{ course.meta.title }}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="schedule__modules" *ngIf="userCourses.length > 0">
+        <h2 class="schedule__modules-text">Модулі курсу</h2>
+
+        <div class="schedule__modules-list">
+          <button class="schedule__modules-button" type="button" [class.schedule__modules-button-active]="selectedModule?.moduleId === module.moduleId" *ngFor="let module of selectedCourse?.program?.modules" [routerLink]="['/schedule', selectedCourse?.meta?.url, module.moduleId]">
+            {{ module?.title }}
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="schedule__content" [class.schedule__content-hidden]="userCourses.length === 0">
+      <ng-container *ngIf="isFiltersRoute && userCourses?.length">
+        <h2 class="schedule__content-heading">Розклад занять на {{ selectedSortLabel }}</h2>
+
+        <p class="schedule__content-text" *ngIf="!filteredTopics?.length">Юху! Ти впорався з усіма завданнями на цей період </p>
+
+        <div class="schedule__list">
+          <app-schedule-item class="schedule__width" *ngFor="let topic of filteredVisibleTopics" [topic]="topic" [programId]="programId" (topicCompleted)="onTopicCompleted($event)" />
+        </div>
+
+        <div class="schedule__pagination" *ngIf="filteredTotalPages > 1">
+          <button class="schedule__pagination-button" *ngFor="let page of [].constructor(filteredTotalPages); let i = index" [class.schedule__pagination-active]="currentPage === (i + 1)" (click)="changeTopicPage(i + 1)">
+            {{ i + 1 }}
+          </button>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="isCoursesRoute && userCourses?.length">
+        <h2 class="schedule__content-heading">{{ selectedModule?.title }}</h2>
+
+        <div class="schedule__list">
+          <app-schedule-item class="schedule__width" *ngFor="let topic of moduleVisibleTopics" [topic]="topic" [programId]="programId" (topicCompleted)="onTopicCompleted($event)" />
+        </div>
+
+        <div class="schedule__pagination" *ngIf="moduleTotalPages > 1">
+          <button class="schedule__pagination-button" *ngFor="let page of [].constructor(moduleTotalPages); let i = index" [class.schedule__pagination-active]="currentPage === (i + 1)" (click)="changeTopicPage(i + 1)">
+            {{ i + 1 }}
+          </button>
+        </div>
+      </ng-container>
+    </div>
+  </section>
+</div>

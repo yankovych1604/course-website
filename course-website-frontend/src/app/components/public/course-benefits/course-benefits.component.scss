@@ -1,0 +1,49 @@
+@use "../../../_system/_styles/_mixins.scss";
+@use "../../../_system/_styles/_theme-material.scss" as *;
+
+.benefits {
+  width: 100%;
+  margin-top: 32px;
+
+  &-title {
+    margin-bottom: 24px;
+    letter-spacing: -0.54px;
+    @include mixins.fonts-text($manrope-bold, 18px, $darkgray);
+  }
+
+  &-list {
+    list-style: none;
+    column-count: 2;
+  }
+
+  &-item {
+    gap: 12px;
+    @include mixins.flex(row, flex-start, center);
+  }
+
+  &-icon {
+    width: 28px;
+    height: 28px;
+    padding: 3px;
+    @include mixins.flex(row, center, center);
+    @include mixins.box-style(1px solid $sea-mist, 50%, $sea-mist);
+  }
+
+  &-image {
+    width: 20px;
+    height: 20px;
+  }
+
+  &-text {
+    letter-spacing: -0.5625px;
+    @include mixins.fonts-text($manrope-medium, 18px, $gunmetal);
+  }
+
+  &-item:nth-child(2), &-item:nth-child(3), &-item:nth-child(5), &-item:nth-child(6) {
+    margin-top: 16px;
+  }
+
+  @media (max-width: $media-lg) {
+    display: none;
+  }
+}

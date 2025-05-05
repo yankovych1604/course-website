@@ -1,0 +1,39 @@
+@use "../../../_system/_styles/_mixins.scss";
+@use "../../../_system/_styles/_theme-material.scss" as *;
+
+.modules {
+  max-width: 568px;
+  width: 100%;
+
+  &-list {
+    width: 100%;
+  }
+}
+
+.button {
+  margin-top: 24px;
+  padding: 12px 24px;
+  @include mixins.flex(row, center, center);
+  @include mixins.box-style(1px solid $white, 10px, $white);
+
+  &-text {
+    @include mixins.fonts-text($manrope-bold, 16px, $black);
+  }
+}
+
+@media (max-width: $media-xl) {
+  .modules {
+    max-width: 944px;
+    width: 100%;
+  }
+
+  .button {
+    margin: 24px auto 0;
+  }
+}
+
+@media (max-width: $media-md) {
+  .button {
+    width: 100%;
+  }
+}

@@ -1,0 +1,27 @@
+<div class="account">
+  <section class="account__container">
+    <div class="account__sidebar">
+      <div class="account__profile">
+        <div class="account__profile-image">
+          <span class="account__profile-icon">{{ userData?.firstName?.slice(0, 1) }}</span>
+        </div>
+        <h2 class="account__profile-name">{{ userData?.firstName }} {{userData?.lastName}}</h2>
+      </div>
+
+      <nav class="account__nav">
+        <button class="account__nav-btn" type="button" [routerLink]="['info']">Особисті дані</button>
+        <button class="account__nav-btn" type="button" [routerLink]="['courses']">Мої курси</button>
+        <button class="account__nav-btn" type="button" [routerLink]="['certificates']">Мої сертифікати</button>
+        <button class="account__nav-btn" type="button" [routerLink]="['reviews']">Залишити відгук</button>
+      </nav>
+
+      <div class="account__exit">
+        <button class="account__exit-btn" type="button" [routerLink]="['']" (click)="logOut()">Вихід</button>
+      </div>
+    </div>
+
+    <div class="account__content">
+      <router-outlet></router-outlet>
+    </div>
+  </section>
+</div>

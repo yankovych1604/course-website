@@ -1,0 +1,13 @@
+<div class="session__overlay" *ngIf="sessionService.isVisible">
+  <div class="session__box">
+    <h2 class="session__title">Ваш сесія завершилась</h2>
+    <div class="session__description">
+      <p class="session__description-text">Щоб продовжити роботу та зберегти доступ до навчальних матеріалів, натисніть "Увійти"</p>
+      <p class="session__description-text">Якщо бажаєте завершити роботу і вийти з облікового запису, оберіть "Вийти"</p>
+    </div>
+    <div class="session__actions">
+      <button class="session__actions-btn" (click)="onSignIn()">Увійти</button>
+      <button class="session__actions-btn" (click)="onExit()">Вийти</button>
+    </div>
+  </div>
+</div>

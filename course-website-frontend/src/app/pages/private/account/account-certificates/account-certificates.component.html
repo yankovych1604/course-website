@@ -1,0 +1,35 @@
+<div class="account__certificates">
+  <h2 class="account__certificates-heading">Мої сертифікати</h2>
+
+  <div class="account__certificates-content" *ngIf="userData.certification && userData.certification.length > 0">
+    <div class="account__certificate" *ngFor="let certificate of paginatedCourses">
+      <div class="account__certificate-heading">
+        <p class="account__certificate-title">{{ certificate.meta.title }}</p>
+        <p class="account__certificate-date">
+          <span class="account__certificate-date-bold">Отримано:</span> {{ certificate.program.completedAt }}
+        </p>
+      </div>
+
+      <div class="account__certificate-details">
+        <p class="account__certificate-difficulty">
+          <span class="account__certificate-difficulty-bold">Рівень:</span> {{ certificate.meta.difficulty_level }}
+        </p>
+        <p class="account__certificate-duration">
+          <span class="account__certificate-duration-bold">Тривалість курсу:</span> {{ certificate.meta.duration }}
+        </p>
+      </div>
+
+      <div class="account__certificate-actions">
+        <button class="account__certificate-btn">Переглянути</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="account__certificate-pagination" *ngIf="totalPages > 1">
+    <button class="account__certificate-pagination-button" *ngFor="let page of [].constructor(totalPages); let i = index" [class.account__certificate-pagination-active]="currentPage === (i + 1)" (click)="changePage(i + 1)">
+      {{ i + 1 }}
+    </button>
+  </div>
+
+  <p class="account__certificates-text" *ngIf="userData.certification.length === 0">На жаль, ти ще не маєш сертифікатів</p>
+</div>

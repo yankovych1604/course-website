@@ -1,0 +1,17 @@
+<div class="faq" (click)="openAnswerOfQuestion()">
+  <div class="faq__question">
+    <h3 class="faq__question-text">{{ faq?.question }}</h3>
+    <button class="faq__toggle" [ngClass]="{'faq__toggle-active': isAnswerOpened}">
+      <div class="faq__toggle-icon">
+        <span class="faq__toggle-horizontalLine"></span>
+        <span class="faq__toggle-verticalLine"></span>
+      </div>
+    </button>
+  </div>
+
+  <div class="faq__answer" #answerContent [style.height.px]="answerHeight">
+    <div class="faq__answer-content">
+      <p class="faq__answer-text">{{ faq?.answer }}</p>
+    </div>
+  </div>
+</div>
