@@ -13,7 +13,10 @@
             </div>
 
             <div class="account__reviews-menu" *ngIf="isDropdownOpened">
-              <button class="account__reviews-button" *ngFor="let course of completedCourses" (click)="selectCourse(course.id, course.title); $event.stopPropagation()">
+              <button class="account__reviews-button"
+                      *ngFor="let course of completedCourses"
+                      (click)="selectCourse(course.id, course.title); $event.stopPropagation()"
+              >
                 {{ course.title }}
               </button>
             </div>
@@ -47,7 +50,11 @@
       </div>
 
       <div class="account__reviews-description" *ngIf="courseId && reviewForm.get('rating')?.value">
-        <textarea formControlName="description" placeholder="Ваш відгук..." class="account__reviews-textarea" [ngClass]="{'account__reviews-textarea-error': isFieldInvalid('description')}"></textarea>
+        <textarea formControlName="description"
+                  placeholder="Ваш відгук..."
+                  class="account__reviews-textarea"
+                  [ngClass]="{'account__reviews-textarea-error': isFieldInvalid('description')}"
+        ></textarea>
 
         <div class="account__reviews-error" *ngIf="isFieldInvalid('description')">
           <p class="account__reviews-error-text">
